@@ -1,7 +1,8 @@
+import java.time.LocalTime
 import java.util.*
 
 private fun main() {
-    백준2566()
+    
 }
 
 fun 예산(request: List<Int>, budget: Int): Int {
@@ -310,4 +311,60 @@ fun 백준2566() {
             }
         }
     }
+}
+
+fun 백준2869() {
+    val userInput = Scanner(System.`in`)
+    val upDistance = userInput.nextInt()
+    val downDistance = userInput.nextInt()
+    val distance = userInput.nextInt()
+
+    // 마지막 날에는 미끄러지지 않으므로, distance - upDistance를 해서 마지막 날을 제외한 높이를 계산
+    // 그리고 나서 (upDistance - downDistance)로 나누어 몇 번 더 올라가야 하는지 계산
+    val beforeLastDistance = distance - upDistance
+    val oneDayDistance = upDistance - downDistance
+
+    // if (beforeLastDistance % oneDayDistance > 0)
+    // 0보다 크다면 달팽이가 마지막 추가 일자를 필요로 한다는 것을 의미. 이는 달팽이가 마지막 날에 조금 더 올라가야 하는 거리가 남아있다는 것을 의미
+    // 마지막 날을 포함하기 위해 최종적으로 +1
+    val result = (beforeLastDistance / oneDayDistance) + (if (beforeLastDistance % oneDayDistance > 0) 1 else 0) + 1
+
+    println(result)
+}
+
+fun 백준2720() {
+    val userInput = Scanner(System.`in`)
+    val testCaseCount = userInput.nextInt()
+    val firstChange = userInput.nextInt()
+    val secondChange = userInput.nextInt()
+    val thirdChange = userInput.nextInt()
+
+    fun counter(charge: Int): IntArray {
+        var remainCharge = charge
+        val 쿼터 = 25
+        val 다임 = 10
+        val 니켈 = 5
+        val 페니 = 1
+
+        val 쿼터카운트 = remainCharge / 쿼터
+        remainCharge -= (쿼터 * 쿼터카운트)
+        val 다임카운트 = remainCharge / 다임
+        remainCharge -= (다임 * 다임카운트)
+        val 니켈카운트 = remainCharge / 니켈
+        remainCharge -= (니켈 * 니켈카운트)
+        val 페니카운트 = remainCharge
+
+        return intArrayOf(쿼터카운트, 다임카운트, 니켈카운트, 페니카운트)
+    }
+
+    counter(firstChange)
+}
+
+fun 백준2884() {
+    val userInput = Scanner(System.`in`)
+    val hour = userInput.nextInt()
+    val minute = userInput.nextInt()
+
+    val time = LocalTime.of(hour, minute).minusMinutes(45)
+    println("${time.hour} ${time.minute}")
 }
