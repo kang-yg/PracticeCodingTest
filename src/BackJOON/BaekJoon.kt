@@ -368,3 +368,77 @@ fun 백준2884() {
     val time = LocalTime.of(hour, minute).minusMinutes(45)
     println("${time.hour} ${time.minute}")
 }
+
+fun 백준9498() {
+    val userInput = Scanner(System.`in`)
+    val score = userInput.nextInt()
+
+    val grade: String = when (score) {
+        in 90..100 -> {
+            "A"
+        }
+
+        in 80..89 -> {
+            "B"
+        }
+
+        in 70..79 -> {
+            "C"
+        }
+
+        in 60..69 -> {
+            "D"
+        }
+
+        else -> {
+            "F"
+        }
+    }
+    println(grade)
+}
+
+fun 백준1330() {
+    val userInput = Scanner(System.`in`)
+    val num1 = userInput.nextInt()
+    val num2 = userInput.nextInt()
+
+    val result = num1.compareTo(num2)
+    if (result == 0) println("==") else if (result == 1) println(">") else println("<")
+}
+
+fun 백준25304() {
+    val userInput = Scanner(System.`in`)
+    val totalPrice = userInput.nextInt()
+    val listCount = userInput.nextInt()
+    var sum = 0
+    userInput.nextLine()
+    repeat(listCount) {
+        val (price, count) = userInput.nextLine().split(" ")
+        sum += price.toInt() * count.toInt()
+    }
+    if (totalPrice.compareTo(sum) == 0) print("Yes") else print("No")
+}
+
+fun 백준10952() {
+    val userInput = Scanner(System.`in`)
+    while (true) {
+        val numList = userInput.nextLine().split(" ").map { it.toInt() }
+        val (num1, num2) = numList
+        if (num1 == 0 && num2 == 0) break
+        println(num1 + num2)
+    }
+}
+
+fun 백준2439() {
+    val userInput = Scanner(System.`in`)
+    val count = userInput.nextInt()
+    (1..count).forEach {
+        repeat(count - it) {
+            print(" ")
+        }
+        repeat(it) {
+            print("*")
+        }
+        if (it != count) println()
+    }
+}
