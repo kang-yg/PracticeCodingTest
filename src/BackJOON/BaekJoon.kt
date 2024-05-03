@@ -442,3 +442,41 @@ fun 백준2439() {
         if (it != count) println()
     }
 }
+
+fun 백준2438() {
+    val userInput = Scanner(System.`in`)
+    val count = userInput.nextInt()
+    (1..count).forEach {
+        repeat(it) {
+            print("*")
+        }
+        if (it != count) println()
+    }
+}
+
+fun 백준11022() {
+    val userInput = Scanner(System.`in`)
+    val count = userInput.nextInt()
+    (1..count).forEach {
+        val num1 = userInput.nextInt()
+        val num2 = userInput.nextInt()
+
+        println("Case #${it}: $num1 + $num2 = ${num1 + num2}")
+    }
+}
+
+fun 백준10811() {
+    val userInput = Scanner(System.`in`)
+    val range = userInput.nextInt()
+    val m = userInput.nextInt()
+    var intList = (1..range).toList()
+    repeat(m) {
+        val startIndex = userInput.nextInt() - 1
+        val endIndex = userInput.nextInt() - 1
+        val newElements = intList.drop(startIndex).take(endIndex - startIndex + 1).reversed()
+        val head = intList.dropLast(intList.size - startIndex)
+        val tail = intList.drop(head.size + newElements.size)
+        intList = head + newElements + tail
+    }
+    intList.forEach { print("$it ") }
+}
